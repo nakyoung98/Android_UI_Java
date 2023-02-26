@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#DADCE0</color>
-    <color name="colorAccent">#E0E0E0</color>
-    <color name="toolbarIconColor">#FFFFFF</color>
+    <color name="colorPrimary">#E0E0E0</color>
+<!--    colorPrimaryDark는 status bar의 색 결정할 예정-->
+<!--    보니까 Card View에서의 색도 관장-->
+    <color name="colorPrimaryDark">#FBB8AC</color>
+<!--    ColorAccent 는 top app bar의 색을 조정할 예정-->
+    <color name="colorAccent">#FEDBD0</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="productGridBackgroundColor">#FFFFFF</color>
+
+<!--    글씨 색 관장 예정-->
+    <color name="textColorPrimary">#442C2E</color>
+<!--    textColorPrimary는 toolbarIcon의 색도 담당할 것이다-->
+    <color name="toolbarIconColor">@color/textColorPrimary</color>
+
+<!--    글씨 입력칸 외부 색-->
+    <color name="textInputOutlineColor">#FBB8AC</color>
+
 </resources>

@@ -22,6 +22,7 @@ public class ProductCardRecyclerViewAdapter extends RecyclerView.Adapter<Product
     private ImageRequester imageRequester;
 
     ProductCardRecyclerViewAdapter(List<ProductEntry> productList) {
+        setHasStableIds(true);
         this.productList = productList;
         //getInstance 처리인 것을 보아하니, 싱글톤인듯
         //이미지를 요청받을 수 있는 api 정도로 생각
@@ -55,6 +56,7 @@ public class ProductCardRecyclerViewAdapter extends RecyclerView.Adapter<Product
      * To set the information on each view
      * **/
 
+
     /**
      * 지정된 위치에 데이터를 표시하기 위해 RecyclerView에 의해 호출됩니다.
      * 이 메서드는 RecyclerView.ViewHolder.itemView의 내용을 업데이트하여 지정된 위치의 항목을 반영해야 합니다.
@@ -72,7 +74,11 @@ public class ProductCardRecyclerViewAdapter extends RecyclerView.Adapter<Product
      * **/
     @Override
     public void onBindViewHolder(@NonNull ProductCardViewHolder holder, int position) {
-        // TODO: Put ViewHolder binding code here in MDC-102
+        //- onBindViewHolder는 가능하면 순수 data set만 하는 것이 가장 이상적 입니다.
+        //  : data를 외부에서 미리 가공해서 onBindViewHolder에서 set 하는 것이 가장 안정적입니다.
+        //- onBindViewHolder에서 가능하면 for, while 과 같은 반복문은 피해야합니다.
+        //- onBindViewHolder에서 특별한 경우를 제외하고 콜백,리스너 정의를 하지 않아야 합니다. (ex: onClickListener)
+
         if (productList != null && position < productList.size()) {
             ProductEntry product = productList.get(position);
             holder.productTitle.setText(product.title);
