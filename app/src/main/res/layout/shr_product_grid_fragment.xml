@@ -12,7 +12,8 @@
         android:id="@+id/appbar"
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
 
         <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
         <!--            android:layout_width="match_parent"-->
@@ -44,7 +45,8 @@
         android:background="@color/productGridBackgroundColor"
         android:paddingStart="@dimen/shr_product_grid_spacing"
         android:paddingEnd="@dimen/shr_product_grid_spacing"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:elevation="8dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"

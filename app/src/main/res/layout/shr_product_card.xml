@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@android:color/white"
-    app:cardElevation="2dp"
+    app:cardElevation="0dp"
     app:cardPreventCornerOverlap="true">
 
     <!--안드로이드 xml은 View가 위치한 depth가 한단계 씩 깊어질 수록 UI 연산이 배로 증가합니다.
