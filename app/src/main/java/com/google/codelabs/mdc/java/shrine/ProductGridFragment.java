@@ -41,6 +41,7 @@ public class ProductGridFragment extends Fragment {
         cardRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL,false));
 
         //어댑터를 통해 등록할 리스트 연결
+        //이때 initProductEntryList에 의해서 이미지등이 처리된다
         ProductCardRecyclerViewAdapter adapter = new ProductCardRecyclerViewAdapter(
                 ProductEntry.initProductEntryList(getResources()));
 
