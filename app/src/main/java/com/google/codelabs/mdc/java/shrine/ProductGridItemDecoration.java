@@ -18,6 +18,7 @@ public class ProductGridItemDecoration extends RecyclerView.ItemDecoration {
         this.smallPadding = smallPadding;
     }
 
+    //각 아이템들간의 간격을 줌
     @Override
     public void getItemOffsets(Rect outRect, View view,
                                RecyclerView parent, RecyclerView.State state) {

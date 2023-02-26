@@ -39,9 +39,15 @@ public class ProductGridFragment extends Fragment {
         cardRecyclerView = mbinding.recyclerView;
         cardRecyclerView.setHasFixedSize(true);
         cardRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL,false));
+
+        //어댑터를 통해 등록할 리스트 연결
         ProductCardRecyclerViewAdapter adapter = new ProductCardRecyclerViewAdapter(
                 ProductEntry.initProductEntryList(getResources()));
+
+        //실질적으로 보이는 이유
         cardRecyclerView.setAdapter(adapter);
+
+        //꾸미는 규칙
         int largePadding = getResources().getDimensionPixelSize(R.dimen.shr_product_grid_spacing);
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.shr_product_grid_spacing_small);
         cardRecyclerView.addItemDecoration(new ProductGridItemDecoration(largePadding, smallPadding));
