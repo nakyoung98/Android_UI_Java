@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductGridFragment">
+
+
+    <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/appbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:toolbarId="@+id/toolbar"-->
+        <!--            app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+
+        <!--            app:contentScrim="?attr/colorPrimary">-->
+
+
+        <!--        navigationIcon으로 navigation 메뉴 아이콘을 정할 수 있음-->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/app_bar"
+            style="@style/Widget.Shrine.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/shr_menu"
+            app:title="@string/shr_app_name"></androidx.appcompat.widget.Toolbar>
+
+        <!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--    @dimens.xml은 말그대로 크기를 상수식으로 선언해놓는 파일-->
+    <!--    layout behavior은 뭘까?-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@color/productGridBackgroundColor"
+        android:paddingStart="@dimen/shr_product_grid_spacing"
+        android:paddingEnd="@dimen/shr_product_grid_spacing"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.core.widget.NestedScrollView>
+
+</FrameLayout>
+
+
+
