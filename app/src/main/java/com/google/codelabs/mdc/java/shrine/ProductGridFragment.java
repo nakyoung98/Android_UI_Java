@@ -145,5 +145,12 @@ public class ProductGridFragment extends Fragment {
                 activity.setSupportActionBar(toolbar);
             }
         }
+
+        if(toolbar != null){
+            //OnClickListener 을 상속받아 구현된 NavigationIconClickListener 클래스를 생성하여 set
+            toolbar.setNavigationOnClickListener(new NavigationIconClickListener(getContext(),mbinding.productGrid));
+        }
+
+
     }
 }
