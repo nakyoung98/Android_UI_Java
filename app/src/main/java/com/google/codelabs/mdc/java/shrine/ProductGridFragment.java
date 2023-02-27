@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.codelabs.mdc.java.shrine.databinding.ShrProductGridFragmentBinding;
 import com.google.codelabs.mdc.java.shrine.network.ProductEntry;
+import com.google.codelabs.mdc.java.shrine.staggeredgridlayout.StaggeredProductCardRecyclerViewAdapter;
 
 public class ProductGridFragment extends Fragment {
 
@@ -33,7 +34,40 @@ public class ProductGridFragment extends Fragment {
         //set up the bar
         setUpToolbar(view);
 
+        //기본 카드
+        //normalGrid();
 
+        //조금더 발전된 카드 모양
+        staggeredGrid();
+        return view;
+    }
+
+    private void staggeredGrid() {
+        cardRecyclerView = mbinding.recyclerView;
+        cardRecyclerView.setHasFixedSize(true);
+
+        //grid 설정
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2,RecyclerView.HORIZONTAL,false);
+        gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return position % 3 == 2? 2: 1;
+            }
+        });
+        cardRecyclerView.setLayoutManager(gridLayoutManager);
+
+        StaggeredProductCardRecyclerViewAdapter adapter = new StaggeredProductCardRecyclerViewAdapter(
+                ProductEntry.initProductEntryList(getResources()));
+
+        cardRecyclerView.setAdapter(adapter);
+
+        int largePadding = getResources().getDimensionPixelSize(R.dimen.shr_staggered_product_grid_spacing_large);
+        int smallPadding = getResources().getDimensionPixelSize(R.dimen.shr_staggered_product_grid_spacing_small);
+
+        cardRecyclerView.addItemDecoration(new ProductGridItemDecoration(largePadding,smallPadding));
+    }
+
+    private void normalGrid() {
         //in onCreateView(), add the RecyclerView initialization code into ProductGridFragment.java
         // after you call setUpToolbar(view) and before the return statement
         cardRecyclerView = mbinding.recyclerView;
@@ -53,7 +87,6 @@ public class ProductGridFragment extends Fragment {
         int smallPadding = getResources().getDimensionPixelSize(R.dimen.shr_product_grid_spacing_small);
         cardRecyclerView.addItemDecoration(new ProductGridItemDecoration(largePadding, smallPadding));
 
-        return view;
     }
 
     @Override

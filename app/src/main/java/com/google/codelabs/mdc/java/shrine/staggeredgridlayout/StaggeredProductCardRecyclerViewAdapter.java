@@ -27,6 +27,10 @@ public class StaggeredProductCardRecyclerViewAdapter extends RecyclerView.Adapte
         imageRequester = ImageRequester.getInstance();
     }
 
+    /**
+     * card 마다 별도의 view type을 보여주고 싶다면 해당 메소드 오버라이딩
+     * onCreateViewHolder 에서 viewType 값으로 사용된다
+    **/
     @Override
     public int getItemViewType(int position) {
         return position % 3;
