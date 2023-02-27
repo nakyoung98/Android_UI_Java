@@ -7,10 +7,15 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.CycleInterpolator;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -148,7 +153,11 @@ public class ProductGridFragment extends Fragment {
 
         if(toolbar != null){
             //OnClickListener 을 상속받아 구현된 NavigationIconClickListener 클래스를 생성하여 set
-            toolbar.setNavigationOnClickListener(new NavigationIconClickListener(getContext(),mbinding.productGrid));
+            toolbar.setNavigationOnClickListener(new NavigationIconClickListener(
+                                                                                getContext(),
+                                                                                mbinding.productGrid,
+                                                                                new FastOutSlowInInterpolator())
+                                                                                );
         }
 
 
