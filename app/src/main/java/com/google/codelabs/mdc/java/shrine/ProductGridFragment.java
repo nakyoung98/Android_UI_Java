@@ -156,8 +156,9 @@ public class ProductGridFragment extends Fragment {
             toolbar.setNavigationOnClickListener(new NavigationIconClickListener(
                                                                                 getContext(),
                                                                                 mbinding.productGrid,
-                                                                                new FastOutSlowInInterpolator())
-                                                                                );
+                                                                                new FastOutSlowInInterpolator(),
+                                                                                getResources().getDrawable(R.drawable.shr_branded_menu),
+                                                                                getResources().getDrawable(R.drawable.shr_close_menu)));
         }
 
 
