@@ -53,6 +53,7 @@ public class NavigationIconClickListener implements View.OnClickListener {
         backdropShown = !backdropShown;
 
         // Cancel the existing animations
+        //눌리면 하고있던 animation 움직임 (열리는모션 닫히는모션 같은 것) 취소하란 뜻
         animatorSet.removeAllListeners();
         animatorSet.end();
         animatorSet.cancel();
@@ -62,9 +63,14 @@ public class NavigationIconClickListener implements View.OnClickListener {
         final int translateY = height -
                 context.getResources().getDimensionPixelSize(R.dimen.shr_product_grid_reveal_height);
 
+        //메뉴가 보여진다면 (backdropShown == true) translateY 값 만큼 내리는 animation 취하기
+        //메뉴가 닫힐거라면 (backdropShown == false) 0으로 올려버리기
         ObjectAnimator animator = ObjectAnimator.ofFloat(sheet, "translationY", backdropShown ? translateY : 0);
+
+        //500ms 동안 움직이기
         animator.setDuration(500);
         if (interpolator != null) {
+            //보간 정의
             animator.setInterpolator(interpolator);
         }
         animatorSet.play(animator);
@@ -72,10 +78,15 @@ public class NavigationIconClickListener implements View.OnClickListener {
     }
 
     private void updateIcon(View view) {
+
+        //openIcon 이미지와 closeIcon 이미지가 존재해야지 이미지를 바꿀 수 있음
         if (openIcon != null && closeIcon != null) {
             if (!(view instanceof ImageView)) {
                 throw new IllegalArgumentException("updateIcon() must be called on an ImageView");
             }
+
+            //backDrop이 떨어질때는 closeIcon 으로 바꿔서 누르면 닫힐것같은 이미지 보여주고
+            //닫혀있을때에는 openIcon 으로 바꿔서 누르면 열릴것같은 이미지 보여주면 됨
             if (backdropShown) {
                 ((ImageView) view).setImageDrawable(closeIcon);
             } else {
