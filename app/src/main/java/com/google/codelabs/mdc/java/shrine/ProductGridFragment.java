@@ -1,5 +1,6 @@
 package com.google.codelabs.mdc.java.shrine;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,6 +40,12 @@ public class ProductGridFragment extends Fragment {
 
         //조금더 발전된 카드 모양
         staggeredGrid();
+
+        //background shape 는 android marshmallow 이상에서만 설정 가능하다
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            //background resource 를 set
+            mbinding.productGrid.setBackgroundResource(R.drawable.shr_product_grid_background_shape);
+        }
         return view;
     }
 

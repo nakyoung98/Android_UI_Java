@@ -7,7 +7,7 @@
 <!--    ColorAccent 는 top app bar의 색을 조정할 예정-->
     <color name="colorAccent">#FEDBD0</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
-    <color name="productGridBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#FFFBFA</color>
 
 <!--    글씨 색 관장 예정-->
     <color name="textColorPrimary">#442C2E</color>

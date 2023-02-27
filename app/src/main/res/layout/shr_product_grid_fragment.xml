@@ -8,6 +8,19 @@
     tools:context=".ProductGridFragment">
 
 
+    <LinearLayout
+        style="@style/Widget.Shrine.Backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="88dp">
+
+        <!-- include 를 통해 merge 태그 파일을 삽입 -->
+        <include layout = "@layout/shr_backdrop_merge"/>
+
+    </LinearLayout>
+
     <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/appbar"
 
@@ -39,13 +52,13 @@
     <!--    @dimens.xml은 말그대로 크기를 상수식으로 선언해놓는 파일-->
     <!--    layout behavior은 뭘까?-->
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/product_grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
         android:background="@color/productGridBackgroundColor"
-
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:elevation="6dp">
+        android:elevation="8dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
