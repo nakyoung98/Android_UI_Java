@@ -58,7 +58,41 @@ public class ProductGridFragment extends Fragment {
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
+                //position 인덱스가 가질 부피
+                /**
+                 *          만약 spanCount 를 3으로 설정했을 때
+                 *
+                 *         if(position == 0) return 3; // 0번 인덱스의 리스트가 가질 부피
+                 *         if(position == 5) return 3; // 5번 인덱스의 리스트가 가질 부피
+                 *         return 1;   // 나머지 인덱스의 리스트가 가질 부피
+                 *         // spanCount를 3으로 설정했으니,
+                 *         // 0번과 5번은 3의 부피를 가지므로 1줄을 통채로 쓰고,
+                 *         // 나머지 인덱스들은 1의 부피므로 한줄에 3개씩 출력.
+                 *
+                 * **/
                 return position % 3 == 2? 2: 1;
+                //0번 인덱스는 1의 부피
+                //1번 인덱스는 1의 부피
+                //2번 인덱스는 2의 부피
+                //3번 인덱스는 1의 부피
+                //4번 인덱스는 1의 부피
+                //5번 인덱스는 2의 부피
+                //...
+
+
+                /**
+                 * 만약  return position % 2 == 0? 2: 1; 이라면
+                 * 0번: 2의 부피
+                 * 1번: 1의 부피
+                 * 2번: 2의부피
+                 * 3번: 1의부피
+                 *
+                 * 이때 한 줄의 spancount는 2이므로
+                 * 모든 줄에는 하나의 값밖에 들어오지 못한다.
+                 *
+                 * 이유: 1번이 1의 부피를 가지지만 2번이 2의 부피를 가지므로 자동으로 옆줄로 넘어감
+                 * 그다음에 3번은 2번의 줄에 있을 수 없으므로(이미 2칸 꽉참) 옆으로 이동함
+                 * **/
             }
         });
         cardRecyclerView.setLayoutManager(gridLayoutManager);
